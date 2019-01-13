@@ -14,10 +14,15 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="432.0" prefWidth="600.0">
                      <children>
-                        <TextField fx:id="fileNameField" alignment="TOP_CENTER" editable="false" layoutX="93.0" layoutY="129.0" prefHeight="40.0" prefWidth="435.0" />
-                        <Button fx:id="choseButton" layoutX="100.0" layoutY="266.0" mnemonicParsing="false" onAction="#choseButtonClick" text="Choose file" />
-                        <Button fx:id="encryptButton" layoutX="263.0" layoutY="266.0" mnemonicParsing="false" onAction="#encryptButtonClick" text="Encrypt file" />
-                        <Button fx:id="signatureButton" layoutX="423.0" layoutY="266.0" mnemonicParsing="false" onAction="#signatureButtonClick" text="Check signature " />
+                        <TextField fx:id="pbkkeyNameField" alignment="TOP_CENTER" editable="false" layoutX="83.0" layoutY="22.0" prefHeight="25.0" prefWidth="435.0" />
+                        <TextField fx:id="fileNameField" alignment="TOP_CENTER" editable="false" layoutX="83.0" layoutY="188.0" prefHeight="25.0" prefWidth="435.0" />
+                        <Button fx:id="fileButton" layoutX="444.0" layoutY="219.0" mnemonicParsing="false" onAction="#fileChooser" text="Choose file" />
+                        <Button fx:id="prkeyButton" layoutX="407.0" layoutY="142.0" mnemonicParsing="false" onAction="#prkeyChooser" text="Choose privat key" />
+                        <Button fx:id="signatureButton" layoutX="430.0" layoutY="331.0" mnemonicParsing="false" onAction="#signatureButtonClick" text="Check signature " />
+                        <Button fx:id="encryptButton" layoutX="273.0" layoutY="331.0" mnemonicParsing="false" onAction="#encryptButtonClick" text="Encrypt" />
+                        <Button fx:id="pbkeyButton" layoutX="406.0" layoutY="63.0" mnemonicParsing="false" onAction="#pubkeyChooser" text="Choose public key" />
+                        <Button fx:id="keyButton" layoutX="67.0" layoutY="331.0" mnemonicParsing="false" onAction="#keyButtonEvent" text="Generate key" />
+                        <TextField fx:id="prkeyNameField" alignment="TOP_CENTER" editable="false" layoutX="83.0" layoutY="109.0" prefHeight="25.0" prefWidth="435.0" />
                      </children>
                         </AnchorPane>
                     </content>
