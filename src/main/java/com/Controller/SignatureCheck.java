@@ -10,7 +10,7 @@ import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
 
 class SignatureCheck {
-    //чтение из файла в байтовый массив
+    //Чтение из файла в байтовый массив
     public static byte[] readFromFile(String fileName) {
         byte[] info;
         try {
@@ -27,30 +27,21 @@ class SignatureCheck {
         return (info);
     }
 
-    public static void SigCheck(String filename) {
+    //Проверка подписи
+    public static void SigCheck(String filename, String signaturePath, String pbkeyPath) {
         try {
-            /* Получение public key из файла “pubkey” */
-            byte[] encKey = readFromFile("src/resources/pubkey");
-
-            /* Создание спецификации ключа */
-            X509EncodedKeySpec pubKeySpec =
-                    new X509EncodedKeySpec(encKey);
-
-            KeyFactory keyFactory = KeyFactory.getInstance
-                    ("DSA");
-            PublicKey pubKey = keyFactory.generatePublic
-                    (pubKeySpec);
-            /* Чтение подписи из файла “signature” */
-            byte[] sigToVerify = readFromFile("src/resources/signature");
-            /* Создание объекта класса Signature и инициализация с помощью открытого ключа    */
-            Signature sig = Signature.getInstance
-                    ("SHA1withDSA");
+            //Получение публичного ключа из файла
+            byte[] encKey = readFromFile(pbkeyPath);
+            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(encKey);
+            KeyFactory keyFactory = KeyFactory.getInstance("DSA");
+            PublicKey pubKey = keyFactory.generatePublic(pubKeySpec);
+            //Получение подписи из файла
+            byte[] sigToVerify = readFromFile(signaturePath);
+            Signature sig = Signature.getInstance("SHA1withDSA");
             sig.initVerify(pubKey);
-            /* Чтение данных из файла “data” и вызов метода update() */
-            FileInputStream datafis = new FileInputStream
-                    (filename);
-            BufferedInputStream bufin =
-                    new BufferedInputStream(datafis);
+            //Чтение данных из файла
+            FileInputStream fis = new FileInputStream(filename);
+            BufferedInputStream bufin = new BufferedInputStream(fis);
             byte[] buffer = new byte[1024];
             int len;
             while (bufin.available() != 0) {
@@ -58,7 +49,7 @@ class SignatureCheck {
                 sig.update(buffer, 0, len);
             }
             bufin.close();
-            /* Верификация */
+            //Верификация
             boolean verifies = sig.verify(sigToVerify);
             System.out.println("Signature verifies:" + verifies);
             if (verifies == true) {

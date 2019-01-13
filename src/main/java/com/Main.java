@@ -20,7 +20,6 @@ public class Main extends Application {
     }
 
     @Override
-
     //Инициализация окна программы
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -29,13 +28,10 @@ public class Main extends Application {
         this.primaryStage.sizeToScene();
         initRootLayout();
         showAllModel();
-
     }
 
     //Создание основного экрана
     private void initRootLayout() {
-
-
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("View/RootLayout.fxml"));
@@ -45,7 +41,6 @@ public class Main extends Application {
             primaryStage.show();
             RootLayoutController rootLayoutController = loader.getController();
             rootLayoutController.setMainApp(this);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,16 +53,10 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("View/AllModel.fxml"));
             AnchorPane mainPane = loader.load();
             rootPane.setCenter(mainPane);
-
-            //EntityManager em = Persistence.createEntityManagerFactory("EPIDEMIC").createEntityManager();
-
             AllModelController allModelController = loader.getController();
             allModelController.setMainApp();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

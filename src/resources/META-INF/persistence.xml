@@ -6,7 +6,7 @@
              version="1.0">
 
 <!--name EPIDEMIC for EntityManager (watch guides) -->
-    <persistence-unit name="EPIDEMIC" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Encrypt" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <properties>

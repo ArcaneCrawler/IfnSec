@@ -1,0 +1,1 @@
+java -cp Encrypt.jar com.Main
